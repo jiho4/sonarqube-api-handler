@@ -1,0 +1,9 @@
+input_json_dir: '../input-json-data'
+output_excel_dir: '../output'
+
+sonarqube_api:
+  endpoint_search_issues: '/api/issues/search'
+  endpoint_search_hotspots: '/api/hotspots/search'
+  sonarqube_url: '###############'
+  project_key: '###############'
+  auth_token: '###############'
