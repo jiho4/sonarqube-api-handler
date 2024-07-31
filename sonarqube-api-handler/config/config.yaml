@@ -7,3 +7,7 @@ sonarqube_api:
   sonarqube_url: '###############'
   project_key: '###############'
   auth_token: '###############'
+
+sonarqube_api_parser:
+  output_columns_hotspots: ['module', 'vulnerabilityProbability', 'securityCategory', 'message', 'component', 'line', 'project', 'key']
+  output_columns_issues: ['module', 'type', 'severity', 'message', 'debt', 'component', 'line', 'rule', 'project', 'key']

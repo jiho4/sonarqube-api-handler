@@ -1,13 +1,19 @@
 import re
+import yaml
+
+with open('config/config.yaml') as f:
+    __conf = yaml.safe_load(f)
+
+OUTPUT_COLUMNS_HOTSPOTS = __conf['sonarqube_api_parser']['output_columns_hotspots']
+OUTPUT_COLUMNS_ISSUES = __conf['sonarqube_api_parser']['output_columns_issues']
 
 
 def _parse_hotspots(module_name, json_data):
-    ordered_keys = ['module', 'vulnerabilityProbability', 'securityCategory', 'message', 'component', 'line', 'key']
     hotspots = []
 
     for hotspot in json_data['hotspots']:
         hotspot['module'] = module_name
-        hotspot_data = {key: hotspot.get(key, '') for key in ordered_keys}
+        hotspot_data = {key: hotspot.get(key, '') for key in OUTPUT_COLUMNS_HOTSPOTS}
 
         hotspots.append(hotspot_data)
 
@@ -15,12 +21,11 @@ def _parse_hotspots(module_name, json_data):
 
 
 def _parse_issues(module_name, json_data):
-    ordered_keys = ['module', 'type', 'severity', 'message', 'debt', 'component', 'line', 'rule', 'key']
     issues = []
 
     for issue in json_data['issues']:
         issue['module'] = module_name
-        issue_data = {key: issue.get(key, '') for key in ordered_keys}
+        issue_data = {key: issue.get(key, '') for key in OUTPUT_COLUMNS_ISSUES}
 
         issues.append(issue_data)
 

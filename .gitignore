@@ -1,9 +1,10 @@
-.DS_Store
 /.idea/
-/__pycache__/
 /build/
 /dist/
 /venv/
+
+.DS_Store
+__pycache__/
 
 /input-json-data/
 /output/
